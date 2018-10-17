@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax</title>
+</head>
+<body>
+<input type="button" id="btn" value="show" onclick="getPrice()">
+<p id="test-jsonp"></p>
+<script>
+//跨域 准备好回调函数
+function refreshPrice(data){
+	var p = document.getElementById('test-jsonp');
+	p.innerHTML = '当前价格：' +
+        data['0000001'].name +': ' + 
+        data['0000001'].price + '；' +
+        data['1399001'].name + ': ' +
+        data['1399001'].price;
+}	
+</script>
+	
+<script type="text/javascript">
+// function success(text){
+// 	var textarea = document.getElementById('test-response-text');
+// 	textarea.value = text;
+// }
+
+// function fail(code){
+// 	var textarea = document.getElementById('test-response-text');
+// 	textarea.value = 'Error code:' + code;
+// }
+
+// //新建XMLHttpRequest对象
+// //var request = new XMLHttpRequest();
+
+// //兼容IE
+// var request;
+// if(window.XMLHttpRequest){
+// 	request = new XMLHttpRequest()
+// }else{
+// 	request = new ActiveXObject('Microsoft.XMLHTTP')
+// }
+
+// //状态变化时，函数被回调
+// request.onreadystatechange = function(){
+
+// 	//成功完成
+// 	if(request.readyState === 4){
+// 		//判断响应结果；
+// 		if(request.status === 200 ){
+// 			//成功，通过reponseText拿到响应的文本；
+// 			return success(request.responseText);
+// 		}else{
+// 			//失败。根据相应吗判断失败原因；
+// 			return fail(request.status)
+// 		}
+// 	}else{
+// 		//HTTP请求还在继续
+// 	}
+// }
+//发送请求
+// request.open('GET', 'index.html');
+// request.send()
+
+
+//最后用getPrice函数触发
+function getPrice(){
+	var js  = document.createElement('script');
+	var head = document.getElementsByTagName('head')[0];
+	js.src = 'http://api.money.126.net/data/feed/0000001,1399001?callback=refreshPrice';
+	head.appendChild(js)
+}
+
+
+
+
+</script>
+</body>
+</html>

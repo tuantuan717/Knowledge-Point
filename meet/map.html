@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>map</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		function pow(x){
+			return x*x
+		}
+
+		var arr = [1,2,3,4,5,6]
+		var result = arr.map(pow)
+		console.log(result)
+
+		var stringArr = arr.map(String)
+		console.log(stringArr)
+
+
+		var arr1 = ['1', '2', '3'];
+		var r = arr1.map(function(num){
+			return parseInt(num,10)//map对每个元素进行映射时会给parseInt传三个参数，parseInt本身可以需要两个参数，第二参数的含义是数制的进制基数。 计算错误导致NaN。
+		})
+		console.log(r)
+
+		var nameList = ['adam', 'LISA', 'barT'];
+		function normalize(arr){
+			var newArr = arr.map(function(x){
+				let str = x.substring(0,1).toUpperCase() + x.substring(1).toLowerCase()
+				return str;
+			})
+			console.log(newArr)
+		}
+		normalize(nameList)
+
+
+	</script>
+</body>
+</html>

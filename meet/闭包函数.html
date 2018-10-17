@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闭包函数</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+//案例一--------------------------------------------
+	function lazy_sum(arr) {
+	    var sum = function () {
+	        return arr.reduce(function (x, y) {
+	            return x + y;
+	        });
+	    }
+	    return sum;
+	}
+
+	var f = lazy_sum([1,2,3,4]);
+	console.log(f)
+	/*
+	ƒ () {
+	        return arr.reduce(function (x, y) {
+	            return x + y;
+	        });
+	}
+
+	*/
+
+	console.log(f())//10
+
+//请再注意一点，当我们调用lazy_sum()时，每次调用都会返回一个新的函数，即使传入相同的参数：
+	var f1 = lazy_sum([1, 2, 3, 4, 5]);
+	var f2 = lazy_sum([1, 2, 3, 4, 5]);
+	console.log(f1 === f2); // false
+
+//f1()和f2()的调用结果互不影响。
+
+//案例二-----------------------------------------------
+function count(){
+	var arr = [];
+	for (var i = 1; i<=3; i++){
+ 		arr.push(function(){
+ 			return i*i
+ 		});
+	}
+	return arr;
+}
+
+var results = count();
+console.log(results)//[f(),f(),f()]
+
+var f1 = results[0];
+console.log(f1())//16
+var f2 = results[1];
+console.log(f2())//16
+var f3 = results[2];
+console.log(f3())//16
+
+//全部都是16！原因就在于返回的函数引用了变量i，但它并非立刻执行。等到3个函数都返回时，它们所引用的变量i已经变成了4，因此最终结果为16。
+
+//返回闭包时牢记的一点就是：返回函数不要引用任何循环变量，或者后续会发生变化的变量。
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

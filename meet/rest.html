@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+<script type="text/javascript">
+	/*
+	function foo(a,b,...rest){
+		console.log(a);
+		console.log(b);
+		console.log(rest)
+	}
+
+	//foo(2,3,4,5,6)
+
+	//只有一个参数的话
+	//foo(1)// a=1, b为undefined rest为[]
+
+	*/
+
+
+function foo(){
+	var x = 1;
+	function bar(){
+		var x = "A";
+		console.log('x in bar() = ' + x);//A
+
+	}
+
+	console.log('x in foo() = ' + x);//1
+	console.log("bar()的执行结果" + bar());
+
+}
+
+console.log("foo()的执行结果" + foo());
+
+</script>
+</body>
+</html>

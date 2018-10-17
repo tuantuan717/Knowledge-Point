@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TagName</title>
+</head>
+<body>
+	<div id="d">
+		<div id="a"></div>
+		<div id="b"></div>
+		<div id="c"></div>
+
+	</div>
+
+	<script type="text/javascript">
+		var a = [document.getElementById('a'), document.getElementById('b'), document.getElementById('c')];
+		var b = [document.getElementById('d').getElementsByTagName('div')];
+
+		console.log(a);//[div#a, div#b, div#c]
+		console.log(b);//[[div#a, div#b, div#c, a: div#a, b: div#b, c: div#c]]
+
+		//a与b的比较在于，b比a 只是多了一个[]符号，因为TagName本身就会返回一个数组
+	</script>
+</body>
+</html>

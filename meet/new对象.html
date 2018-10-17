@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原型链</title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+var p = [];
+var A = new Function();
+A.prototype = p;
+console.log(A.prototype)//[]
+var a = new A;
+a.push(1);
+console.log(a.length);
+console.log(p.length);
+console.log(a)//[1]
+console.log(p)//[]
+
+//new 的过程
+//var obj = {};obj._proto_ = A.prototype;A.apply(obj);
+
+</script>
+</body>
+</html>

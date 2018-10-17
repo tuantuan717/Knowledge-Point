@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Json反序列化</title>
+</head>
+<body>
+	
+<script type="text/javascript">
+console.log(JSON.parse('[1,2,3,4]'));
+console.log(JSON.parse('{"name":"ming","age":14}'));
+console.log(JSON.parse('true'));
+console.log(JSON.parse('123.45'))
+
+var obj = JSON.parse('{"name":"ming", "age":14}', function(key,value){
+    if(key === 'name'){
+        return value + '同学';
+    }
+    return value
+    
+});
+
+console.log(obj)
+
+
+
+</script>
+</body>
+</html>

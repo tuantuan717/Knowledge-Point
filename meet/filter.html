@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>filter</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+	//筛选出奇数
+	var arr = [1,2,3,4,5,6,7]
+	var r = arr.filter(function(x){
+		return x % 2 !== 0
+	})
+
+	console.log(r)
+
+	//筛选出不是空格元素
+	var arr1 = ['A', '', 'B', null, undefined, 'C', '  '];
+	var newArr = arr1.filter(function(s){
+		return s && s.trim();
+	});
+	console.log(newArr)
+
+	//筛选去掉重复元素
+	var arr2 = ['apple', 'strawberry', 'banana', 'pear', 'apple', 'orange', 'orange', 'strawberry'];
+	var reArr = arr2.filter(function(ele, index, self){
+		return self.indexOf(ele) === index//indexOf总是返回第一个元素的位置，后续的重复元素位置与indexOf返回的位置不相等，因此被filter滤掉了
+	});
+	console.log(reArr)
+
+	//请尝试用filter()筛选出素数
+	var arr3 = [1,2,3,4,5,6,7,8,9,10,56,81,27];
+	var hh = arr3.filter(get_primes());
+	function get_primes() {
+		var re = function(ele){
+			if(ele == 0 || ele == 1 ){
+				return false;
+			}else if(ele == 2){
+				return true;
+			}else{
+				for (var i = 2; i < ele; i++) {
+					if( ele % i == 0 ){
+						return false;
+					}		
+				}
+				return true;
+			}
+
+		}
+		return re;
+	}
+	console.log(hh)
+
+
+
+
+	</script>
+</body>
+</html>

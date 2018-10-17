@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>apply</title>
+</head>
+<body>
+
+<script type="text/javascript">
+var count = 0;
+
+var oldParseInt = parseInt;
+
+window.parseInt = function(){
+	count++;
+	console.log(oldParseInt.apply(null, arguments)) ;
+}
+
+parseInt('10');
+parseInt('10');
+parseInt('10');
+parseInt('10');
+
+console.log(count)
+
+
+//他這樣做是為了保存ParseInt原本有的功能
+// 又為了要可以計算次數;
+
+// 如果裡面寫了count那一段
+// 他原本功能就會整個改掉了
+// 所以才會在開頭先存到其他變數
+
+// 然後在count下方又調用那個變數
+// 把方法要回來
+</script>
+	
+</body>
+</html>

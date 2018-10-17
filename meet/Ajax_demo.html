@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script>
+    window.onload =function(){
+      var oBtn = document.getElementById('btn');
+ 
+      oBtn.onclick = function(){
+        //创建XHR对象
+        var xhr 
+         if(window.XMLHttpRequest){
+          xhr = new XMLHttpRequest()
+        }else{
+          xhr = new ActiveXObject('Microsoft.XMLHTTP')
+        }
+        //请求的方式，地址，是否异步
+        xhr.open('get','hhh.jpg',true);
+ 
+        //请求的确定操作，初始化，相当于搜索时，敲击的回车
+        xhr.send(null);
+ 
+        //请求的readyState每变化一次就执行一次onreadystatechange函数
+        //其中readyState表示的是：请求/响应过程的当前活动阶段
+        //readyState有如下取值
+        /*
+        *  0：未初始化，尚未调用send()方法
+        *  1: 启动
+        *  2：发送
+        *  3：接收
+        *  4：完成
+        */
+        xhr.onreadystatechange =function(){
+          console.log(xhr.readyState)
+          if(xhr.readyState == 4 && xhr.status == 200){
+            alert(xhr.responseText);
+          }
+        }
+      };
+ 
+ 
+    };
+  </script>
+</head>
+<body>
+<input type="button" id="btn" value="show">
+</body>
+</html>
